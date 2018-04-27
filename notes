@@ -1,0 +1,158 @@
+9:25 PM 3/15/2018
+Izgleda da ne mogu u javascriptu da ubacim fino $('dugme').on('click', moja_funkcija()) jer u tom trenutku
+pokrece funkciju zajedno sa celom stranicom. mora da ide gej " , function(){moja_funkcija()}.
+jquery ui dugmici nisu nista specijalniji od htmlovih standardnih. Dev extremovi su bili do jaja
+
+Datatables.net je fina biblioteka za iscrtavanje tabela direktno iz javascripta, bez bakcanja sa DOMom, 
+kao dataSource se moze proslediti i objekat, pa dosta podseca na DevExtremov datagrid.
+
+Imam tu ideju da se malo igram sa javscriptom i jquerijem i da napravim neku veliku web aplikaciju koja ce sve zivo da radi.
+Samo cu da ubacujem stvari, kako ih se budem prisetio. Za sada sam ubacio weather API koji hvata vremensku prognozu.
+
+12:23 AM 3/16/2018
+Trenutno se igram sa loadovanjem dela stranice u stranicu. kada se koristi .load , moze se proslediti cela stranica, ili samo deo
+(preko id-a). Tada se u pocetnoj stranici u elementu na koji smo pozvali load kopira ceo segment zadate stranice sa odgovarajucim id-om.
+Da li se ovako moze kopirati i neka stranica koja nije u projektu? Ne moze.
+
+10:53 PM 3/16/2018
+Dobio sam ideju da napravim bazu podataka sa knjigama iz oblasti matematike koje imam i koje bih zeleo da kupim u sledecom periodu.
+Svaka knjiga ima: Autora, naslov, tip (PDF,kopirano,kupljeno), status (0-u opticaju, 1-nabaviti,2-nabaviti hitno, 3-nabavljeno)
+Dovoljno mi je ovo za pocetak. posle cu rucno da ispravljam stvari pomocu aplikacije (ne preko nekog sqlite editora jebemliti)
+
+11:42 PM 3/16/2018
+Mali problem. Koristio sam funkciju jquerija .load da ucitam u svoju stranicu jedan div iz druge stranice (da ne bih reloadovao celu stranicu).
+Problem je sto ne mogu u main.js (javascript fajlu glavne stranice) da podesim event za dugme koje se ucitalo zajedno sa div-om.
+Jednostavno ga ne prepoznaje...Da li da pravim poseban js za tu drugu stranicu iz koje sam ucitao elemente, sta znam.
+Resio sam problem. .load se izvrsava asinhrono i sama funkcija prima tri argumenta, od kojih je treci 'success'. E tu treba postaviti
+event za dugme koje je doslo naknadno jer u suprotnom ne pronalazi taj id.
+
+11:53 PM 3/16/2018
+Sajt sam napravio bez upotrebe jebenog bootstrapa i tih gluposti. NE znam zasto, ali mi je mnogo udobnije da radim sa osnovnim bibliotekama.
+Koristio sam samo jqeury ui za tabelu i dugmice, zato sto su korektni. Bazu sam postavio na webSQL
+Treba regulisati problem duplog unosa, i kako srediti ID prilikom toga. Moracu rucno, sta. ubacim ediatble tabelu.
+Eh da mi je stari dobri devextreme....
+
+1:29 AM 3/17/2018
+Uspeo sam da ubacim projekat na svoj alas server. Sve radi kako treba, sem databaze. mislim, odvaja se databaza koju sam sa servera ugrabio,
+od one koja je isla preko localhosta. To znaci da ipak moram da pravim ajax-to-php zahtev da se sacuva novouneta knjiga. Pozabavicu se time sutra verovatno
+Pod trenutnim uslovima, databaza se konstruise kod samog korisnika, i to mi se ne svidja. Svi korisnici web aplikacije moraju kaciti informacije na istu databazu.
+Jos jedna zanimljiva stvar: css se ne ponasa kako bi trebalo
+
+1:55 AM 3/17/2018
+Eh jebiga. probao sam da promenim tip projekta sa htmml5 app na php app i nije uspelo pa sam napravio novi projekat zasnovan
+na phpu. To je jedini nacin da imam kontrolu nad bazom podataka koja se cuva na serveru a ne kao websql kod klijenta. Mislim da me
+generalno vise zanima backend nego gejend (losa fora). Inace, ova fora sa php projektom preko localhosta, zahteva apache XAMPP program
+za simulaciju servera.
+Ubacio sam XAMPP medjutim ne prepoznaje objekat. The requested URL was not found on this server. Verovatno moram sve da gurnem u neki
+poseban direktorijum
+
+10:29 AM 3/17/2018
+Osposobio sam XAMPP fino, zaboravio sam bio da prebacim projekat u onaj folder xampp/htdoc. Sada radi sve fino, treba podici ovde bazu podataka,
+valjda ce se baza sa alasa slicno ponasati. Ceo postupak upisivanja u databazu treba promeniti. Treba mi ajax zahtev na dugme koji salje php fajlu to sto treba.
+Zanimljivo je zbog cega mi netBeans nije pustio da dodam samo jedan php fajl koji ce da handeluje zahteve nego sam morao citav projekat
+da promenim na php. Zaboravio sam kako se salje php zahtev i kako se u phpu podesava baza podataka. Dobro bi mi dosao onaj projekat sa web-a.
+
+11:20 AM 3/17/2018
+Kada refreshujesh stranicu koja ide preko XAMPPA koristi uvek CTRL+F5 jer u protivnom ne ucita promene koje si odradio u javascriptu.
+Uspeo sam da ubacim zahtev za php preko alasa kompletno. na url treba staviti samo :php/test.php. Nema vise potrebe za localhsotom.
+Ostalo je da resim mali problem sa css-om. Naime, kao da se nije lepo ucitao taj deo aplikacije. 
+Ah, to je bila moja greska, zumirao sam stranicu slucajno. Opet, prilikom zumiranja stranice ne bi trebalo to da se desava.
+
+10:08 PM 3/18/2018
+Imam ideju da implementiram chat sistem na stranicu. To cu sad i da uradim, samo da prvo usposobim bazu za cuvanje knjiga.
+
+7:55 PM 3/20/2018
+Da bih osposobio bazu podataka na alasu moram da odem do faxa i trazim dozvolu. To cu uraditi prekosutra i tada cu sve uraditi preko baze.
+Do tada cu iskoristiti alternativu, cuvacu podatke u txt fajlu. Znam, malo je bzvz, ali na kraju krajeva, posluzice mi za cuvanje podataka o
+knjigama. Dakle, svaki unos ce dodati po jednu liniju u fajl. Klikom na drugo dugme cu izvuci podatke.
+
+8:24 PM 3/20/2018
+Godinu dana radim sa jquerijem a i dalje ne znam da koristim .val(). Kako da upisem neki string u html element?
+.append() konju. .val() je kad imas select box ili tako nesto specijalno. Jednom ce se vratiti u modu jednostavne html
+stranice i tad ce svi ovi poznavaoci bootstrap skriptovanja da izgube posao. Ja cekam...
+
+8:58 PM 3/20/2018
+Jedna opaska: Obrati paznju na velika i mala slova kada pises putanju url u ajaxu ili bilo gde. Kada smo na localhostu,
+ne prijavljuje gresku, medjutim alas ne pronalazi fajl ako adresa nije potpuno ista ( ne 'php' nego 'PHP' recimo).
+Problem koji mi se i dalje javlja i na alasu i na localhostu je ne-azuriranje fajlova u realnom vremenu. Biti obazriv kod 
+ovih stvari
+
+5:43 PM 3/23/2018
+Ok, ovako, chat skoro pa radi. Ostalo je da se sredi to da se ljudi fino uloguju i da se prebacim na databazu. za sada se stvari cuvaju
+u fajlu, a mozda to i nije lose. Ono sto ce biti izazov, jeste da se sa desne strane prikazuju ljudi koji su trenutno prisutni na stranici.
+
+3:44 PM 3/24/2018
+Namestio sam radio da stoji na stranici, fin je. partyviberadio.com. Ono sto je ostalo jeste da se sredi kasnjenje poruka s 
+vremena na vreme (nekad i po 10-15 minuta). Ovo bi se lepo resilo kada bih presao na sockete, al jebiga, treba da ih naucim.
+Za sada ajax zahtev kapiram ali me brine jedna stvar. Obzirom da se poruke refreshuju svake sekunde, sta ako se svake sekunde downloaduje
+fajl chat.txt sa servera? To ne bi bilo okej, a moralo bi da se to desava. Ipak cu morati na socketarenje.
+
+1:10 AM 3/24/2018
+Ma zajebi sockete. Ono sto nama kasne poruke je zbog toga sto vise korisnika pokusavaju istovremeno da iscitaju isti fajl. Imam
+bolje resenje. kada upadnemo u databazu, bice okej. Databaza radi perfektno. Sad se molimo da ce njena upotreba 
+ubrzati chat i da poruke nece kasniti. Sutra cu to da odradim, umoran sam dosta. Aman mi je fino pomogo.
+
+4:55 PM 3/26/2018
+Chat je osposobljen, imamo mali problem sa time da kad podesavam da se na dugme moze kliknuti pomocu ENTERa, sajt se
+ponasa kao da se dva put kliknulo, iako sam jednostavno napravio funkciju koja se izvrsava na enter i postavio tu
+istu funkciju na klik za dugme (sto znaci da samo pritiskanje entera nije direktno povezano sa dugmetom).
+Bice problema i oko promene boje u textarea, pa ce taj objekat najverovatnije biti zamenjen nekim canvasom npr.
+Sa druge strane, martina radi na css delu. Zamenio sam jedinice vh i vw sa procentima, jer nekako se bolje ponasa
+(a ne bi trebalo). Kad se sve sredi, verovatno cu vratiti na vw jer onda mozemo i mobilnu aplikaciju da modujemo.
+Sreio sam chat limit, tako da se sada po oko dva kilobajta ucitava sa svake sekunde. Brine me pomalo taj prevelik
+broj zahteva ka phpu. Pitanje je da li bi socketi to resili? Bilo bi idealno kada bi mogla da postoji php aplikacija
+koja je sve vreme pokrenuta na serveru i koja proverava da li je nesto uneto u bazu, ako jeste, da posalje svim
+korisnicima te podatke (mozda socketi tako i funkcionisu).
+
+11:42 PM 3/26/2018
+Ubacio sam zvuk na novu poruku. Proslo je lagano. Problem je kada se koriste dva <audio> taga, onda se ne mogu pustiti
+istovremeno. Medjutim, moj radio ide preko APIija pa se nekako ne guraju. Onaj dijalog se i dalje cudno ponasa,
+recimo kad se ulogujem, i ukoliko odmah krenem da pisem nesto (bez da sam kliknuo negde na input), onda me vrati na home
+stranicu (i naravno, ne mogu se opet ulogovati). Iz nekg razloga, promenljiva koja cuva nick nece da se promeni kada korisnik
+bez refresha proba ponovo da udje na chat. Sad cu probati da sredim te dve stvari (ali prvo, malo soka i VISb-a).
+
+Pored toga, danas sam sredio malo kod. Zaista je bio nepregledan i promenljive su imale lose nazive kao i html tagovi.
+Sada je malo bolje, ali polako pocinjem da gubim nit gde se sta nalazi. Cak sam morao i functions.js da podelim na dva
+fajla radi lakse organizacije.
+
+12:34 AM 3/27/2018
+Resio sam problem sa dijalogom. U pitanju se sledeca stvar. Sta se desilo: ja izaberem ime, dopisujem se, kliknem opet
+na chat, otvori se dijalog, ja ukucam ime, cap, on ne promeni ime. Plus zabaguje i nece da zatvori dijalog.
+koristio sam dijalog 'close' za tu svrhu. O cemu se radi? Nakon sto prvi put uradim dijalog 'close', taj div sa 
+dugmetom i dalje ostaje tu sa svojim ID-jem samo sto se ne vidi na stranici. Kada se sada ponovo pokrene inicijalizacija
+dijaloga, kreiraju se dva dijaloga (od kojih se onaj stari ne vidi) sa istim ID-jevima. A to je NO NO.
+
+9:38PM 4/4/2018
+Uh nisam odavno pisao ali nisam ni nesto mnogo menjao. Bitna stvar: Uveden je <audio> tag u html5 koji se sjajno ponasa
+sa radio streamovanjem. Opcije su play(), pause(). Regulisao sam problem prevelikog protoka, sada se poruke ucitavaju samo
+ako se nije promenila poslednja poruka. Tako da sada server radi veci deo provere. Aman mi je rekao da pogledam sta je
+server sent event (https://sweetcode.io/using-html5-server-sent-events/). Ova stvar bi mogla da zameni websockete, i to bi
+jos unapredilo efikasnost sajta.
+
+12:34AM 4/14/2018
+Prebacili smo dugmice na <li> sa bootstrapa i sada radimo na tome da se slike mogu poslati. SLike se za sad salju kao
+<img> elementi ali cu namestiti da program sam prepozna .jpg, .jpeg, .gif itd i da ih crta. Problem nam je sa fiksiranom velicinom slike.
+btw, <span> nije pogodan za podesavanja visine. Prebacio sam .m na div umesto span-a. Sad martina namesta velicine.
+Imam problem dupolog klika na chat. Sa druge strane, zelim da se navigacioni meni sklanja kad se klikne van njega.
+to radi okej, ali onda ne radi sam link sa navbara, to cu mozda kasnije.
+
+12:50AM 4/14/2018
+Sredila martina velicinu slike. Sad je okej. Praksa, koristimo donju crtu da odvajamo reci, ( "_" umesto "-")
+
+10:20AM 4/17/2018
+Kratko zapazanje: kada se elementi dinamciki ucitavaju u stranicu, ne moze se na bilo kom mestu postaviti 
+eventListener za taj dinamicki element, vec ga moram postaviti u onom delu koda koji se izvrsava po uspesnom
+postavljanju (npr. ako iz ajaxa izvlacim podatke koje trpam na stranicu, moram u success da stavim .onclick.
+Primetio sam da sam nekoliko puta ovo prevideo. Srecom, izbavio sam se. Ubacio sam sliku za loadskrin, dok se
+ne zavrsi ucitavanje first_load() iz ajaxa koja hvata korisnike, prve poruke i emotikone.
+Ponosan sam na to sto sam stavio da se i smajliji dinamicki (citaj: automatski) ucitavaju iz baze podataka.
+Prvi put sa sada koristio metodu dir() u phpu koja cita imena datoteka u nekom direktorijumu. Simpaticna opcija
+
+5:16PM 4/17/2018
+Mind blow. Umesto koriscenja standardnog $('#element_id).on('click',function(){}) bolje je koristiti
+$(document).on('click', "#menu li", function(e) jer prva komanda samo jednom proverava sta postoji i dodeljuje se
+akcija, tog druga radi kod dinamickog sadrzaja tj. svaki put kad se klikne, proverava se da li je njegov ID zadato.
+
+9:54PM 4/17/2018
+PHP radi mysqli zahteve sinhrono, u prevodu, mogu samo jedan ispod drugog u redu da se izvrsavaju upiti. Ovo bi
+trebalo proveriti ali za sada radi okej.

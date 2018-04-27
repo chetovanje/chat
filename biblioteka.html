@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="JS/files.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div id='biblioteka_main'>
+            <h1>Dodaj novu knjigu</h1>
+            <div id='new_book_form'>
+                <br> <br>
+                <label for='title'>Naslov knjige: </label>
+                <input type='text' id='title'> 
+                <br> <br>
+                <label for='author'>Autor knjige: </label>
+                <input type='text' id='author'> 
+                <br> <br>
+                <label for='type'>Tip knjige: </label>
+                <select id='type'>
+                    <option>PDF</option>
+                    <option>Kopirano</option>
+                    <option>Fizicka Kopija</option>                
+                </select>
+                <br> <br>
+                <label for='status'> Status: </label>
+                <select id='status'>
+                    <option> Razmatra se </option>
+                    <option> Obavezno </option>
+                    <option> Kupljeno </option>
+                </select>
+                <br> <br>
+                <button id='add_new_book'>Dodaj</button>
+                <button id='edit_book'>Izmeni</button>  
+            </div>
+            <br>
+            <input type="file" id="myfiles" name="mymiles">
+            
+            <br><br><br><br>
+            <div id="error_log" style="color:orange; font-size: 20px; height: 30%; overflow-y: scroll"> </div>
+        </div>
+    </body>
+</html>
